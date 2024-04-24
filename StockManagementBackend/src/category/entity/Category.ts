@@ -1,16 +1,20 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToOne, JoinColumn } from "typeorm"
+import { Products } from "../../Products/entity/Products";
 
 @Entity()
 export class Category {
 
     @PrimaryGeneratedColumn()
-    categoryId: number
+    categoryId: number;
 
     @Column()
-    categoryName: string
+    categoryName: string;
 
     @Column()
-    categoryDescription: string
+    categoryDescription: string;
 
+
+    @OneToOne(() => Products, (Products) => Products.category)
+    category: Products
 
 }

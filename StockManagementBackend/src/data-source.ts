@@ -1,4 +1,4 @@
-import "reflect-metadata"
+
 import { DataSource } from "typeorm"
 import { Customers } from "./Customers/entity/Customers"
 import { Suppliers } from "./Suppliers/entity/Suppliers"

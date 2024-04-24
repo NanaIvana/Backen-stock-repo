@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from "typeorm"
+import { Products } from "../../Products/entity/Products"
+import { Order } from "../../Order/entity/Order"
 
 @Entity()
 export class OrderItem {
@@ -15,7 +17,13 @@ export class OrderItem {
     @Column()
     unitPrice: number
 
-    @Column()
-    productId: number
+    @ManyToOne(() => Products, (product) => product.orderitems)
+    product: Products
+
+    @OneToMany(() => Order, (orders) => orders.orderitems)
+    order: Order[]
+
+
+
 
 }

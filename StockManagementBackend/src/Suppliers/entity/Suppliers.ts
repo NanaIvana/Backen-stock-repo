@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Products } from "../../Products/entity/Products"
 
 @Entity()
 export class Suppliers {
@@ -17,5 +18,9 @@ export class Suppliers {
 
     @Column()
     email: string
+
+    
+    @ManyToOne(() => Products, (product) => product.supply)
+    product: Products
 
 }

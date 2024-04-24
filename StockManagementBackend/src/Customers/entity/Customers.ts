@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm"
+import { Products } from "../../Products/entity/Products"
 
 @Entity()
 export class Customers {
@@ -19,6 +20,9 @@ export class Customers {
     phoneNumber: number
 
     @Column()
-    productId: number
+    password: string
+
+    @ManyToOne(() => Products, (product) => product.customer) // note: we will create author property in the Photo class below
+    produt: Products[]
 
 }
